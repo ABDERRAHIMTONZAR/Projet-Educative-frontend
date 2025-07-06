@@ -55,10 +55,10 @@ export function CreateAccounts() {
         console.log(token)
 
         const [classesResponse, matieresResponse] = await Promise.all([
-          axios.get('http://localhost:5001/api/classes', {
+          axios.get(`${import.meta.env.VITE_API_URL}/api/classes`, {
             headers: { Authorization: `Bearer ${token}` }
           }),
-          axios.get('http://localhost:5001/api/matieres', {
+          axios.get(`${import.meta.env.VITE_API_URL}/api/matieres`, {
             headers: { Authorization: `Bearer ${token}` }
           })
         ]);
@@ -89,7 +89,7 @@ export function CreateAccounts() {
 
       switch (formData.role) {
         case 'parent':
-          endpoint = 'http://localhost:5001/api/create-parent';
+          endpoint = `${import.meta.env.VITE_API_URL}/api/create-parent`;
           dataToSend = {
             nom: formData.nom,
             prenom: formData.prenom,

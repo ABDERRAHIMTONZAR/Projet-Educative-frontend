@@ -18,7 +18,7 @@ const LoginForm: React.FC = () => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:5001/api/login', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`, {
         email,
         password
       });

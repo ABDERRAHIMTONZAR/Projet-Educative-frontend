@@ -22,7 +22,7 @@ export default function ExamCalendarPage() {
   const chargerExamens = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:5001/api/getexamens");
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/getexamens`);
 
       const data: ExamEvent[] = response.data;
 

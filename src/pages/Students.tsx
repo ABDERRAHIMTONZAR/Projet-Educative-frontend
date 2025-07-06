@@ -34,7 +34,7 @@ export function Students() {
         setError(null);
 
         // Fetch eleves_info
-        const infoResponse = await fetch('http://localhost:5001/api/eleves_info');
+        const infoResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/eleves_info`);
         if (!infoResponse.ok) throw new Error('Erreur lors de la récupération des statistiques');
         const infoData = await infoResponse.json();
         // Log pour debug
@@ -42,7 +42,7 @@ export function Students() {
         setEleveInfo(Array.isArray(infoData) ? infoData[0] : infoData);
 
         // Fetch eleves-moyenne-examen
-        const studentsResponse = await fetch('http://localhost:5001/api/eleves-moyenne-examen');
+        const studentsResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/eleves-moyenne-examen`);
         if (!studentsResponse.ok) throw new Error('Erreur lors de la récupération des élèves');
         const studentsData = await studentsResponse.json();
         setStudents(studentsData);

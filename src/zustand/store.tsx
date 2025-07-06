@@ -29,7 +29,7 @@ export const useHomeworkStore = create<HomeworkState>((set) => ({
       const token = localStorage.getItem('token');
     try {
       // Appeler l'API backend pour obtenir la liste des fichiers de S3
-      const response = await axios.get('http://localhost:5001/api/recuperer',{
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/recuperer`,{
         headers: {
           Authorization: `Bearer ${token}`,
         },

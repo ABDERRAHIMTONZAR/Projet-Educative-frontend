@@ -25,10 +25,10 @@ export function Assignments() {
   useEffect(() => {
     async function fetchStats() {
       try {
-        const resStats = await axios.get('http://localhost:5001/api/dashboard-stats');
+        const resStats = await axios.get(`${import.meta.env.VITE_API_URL}/api/dashboard-stats`)
         setStats(resStats.data);
 
-        const resDevoirs = await axios.get('http://localhost:5001/api/devoirs-with-class-prof');
+        const resDevoirs = await axios.get(`${import.meta.env.VITE_API_URL}/api/devoirs-with-class-prof`);
         setAssignments(resDevoirs.data);
       } catch (error) {
         console.error('Erreur lors du chargement des données:', error);

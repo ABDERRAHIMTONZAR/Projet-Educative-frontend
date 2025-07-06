@@ -27,10 +27,10 @@ export function Exams() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const resStats = await axios.get('http://localhost:5001/api/examens-dashboard');
+        const resStats = await axios.get(`${import.meta.env.VITE_API_URL}/api/examens-dashboard`);
         setStats(resStats.data);
 
-        const resExams = await axios.get('http://localhost:5001/api/examens-details');
+        const resExams = await axios.get(`${import.meta.env.VITE_API_URL}/api/examens-details`);
         setExams(resExams.data);
       } catch (error) {
         console.error('Erreur lors du chargement des données:', error);

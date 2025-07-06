@@ -33,14 +33,14 @@ export function Teachers() {
   };
 
   useEffect(() => {
-    fetch('http://localhost:5001/api/enseignants-classes-stats')
+    fetch(`${import.meta.env.VITE_API_URL}/api/enseignants-classes-stats`)
       .then(res => res.json())
       .then(data => setStats(data))
       .catch(console.error);
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:5001/api/enseignants/classes')
+    fetch(`${import.meta.env.VITE_API_URL}/api/enseignants/classes`)
       .then(res => res.json())
       .then(data => {
         console.log('Data reçue enseignants:', JSON.stringify(data, null, 2));

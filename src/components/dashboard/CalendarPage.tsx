@@ -18,7 +18,7 @@ export default function CalendarPage() {
   const chargerDevoirs = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:5001/api/getdevoirs");
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/getdevoirs`);
 
       const data: AssignmentEvent[] = response.data.map((item: any) => {
         const startDate = new Date(item.start);

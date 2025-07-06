@@ -37,7 +37,7 @@ interface Stats {
 }
 
 // API base URL from environment variables
-const API_BASE = 'http://localhost:5001';
+const API_BASE = `${import.meta.env.VITE_API_URL}`;
 
 // Create Axios instance
 const api = axios.create({

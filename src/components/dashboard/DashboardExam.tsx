@@ -21,7 +21,7 @@ const DashboardExam: React.FC = () => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const examsResponse = await axios.get('http://localhost:5001/api/recupererExamen', {
+        const examsResponse = await axios.get(`${import.meta.env.VITE_API_URL}/api/recupererExamen`, {
           headers: { Authorization: `Bearer ${token}` }
         });
        console.log(token)
@@ -65,7 +65,7 @@ const DashboardExam: React.FC = () => {
       console.log('Token présent:', !!token);
 
       console.log('Demande d\'URL pré-signée en cours...');
-      const response = await axios.get('http://localhost:5001/api/upload', {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/upload`, {
         params: {
           name: file.name,
           type: file.type || 'application/octet-stream',
@@ -93,7 +93,7 @@ const DashboardExam: React.FC = () => {
         console.log('Enregistrement de l\'examen dans la base de données...');
         try {
           const response = await axios.post(
-            'http://localhost:5001/api/enregistrerExamen',
+            `${import.meta.env.VITE_API_URL}/api/enregistrerExamen`,
             {
               title: formData.get('title'),
               subject: formData.get('subject'),
@@ -114,7 +114,7 @@ const DashboardExam: React.FC = () => {
             console.log('Examen enregistré avec succès');
             alert('Examen enregistré avec succès !');
             // Recharger les données
-            const examsResponse = await axios.get('http://localhost:5001/api/recupererExamen', {
+                  const examsResponse = await axios.get(`${import.meta.env.VITE_API_URL}/api/recupererExamen`, {
               headers: { Authorization: `Bearer ${token}` }
             });
             setExams(examsResponse.data);

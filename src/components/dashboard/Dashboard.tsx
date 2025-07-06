@@ -59,7 +59,7 @@ const Dashboard: React.FC = () => {
       console.log('Token présent:', !!token);
 
       console.log('Demande d\'URL pré-signée en cours...');
-      const response = await axios.get('http://localhost:5001/api/upload', {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/upload`, {
         params: {
           name: file.name,
           type: file.type || 'application/octet-stream',
@@ -114,7 +114,7 @@ const Dashboard: React.FC = () => {
         try {
           console.log(token)
           const response = await axios.post(
-            'http://localhost:5001/api/enregistrer',
+            `${import.meta.env.VITE_API_URL}/api/enregistrer`,
             {
               title,
               subject,
